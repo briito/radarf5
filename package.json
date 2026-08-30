@@ -1,0 +1,9 @@
+{
+  "name": "radarf5-blog",
+  "version": "1.0.0",
+  "description": "Gerador de Sitemap para o Blog Radar F5",
+  "main": "generate-sitemap.js",
+  "scripts": {
+    "build-sitemap": "node generate-sitemap.js"
+  }
+}

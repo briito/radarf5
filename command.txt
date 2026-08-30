@@ -1,0 +1,5 @@
+./convert_webp.sh
+
+node generate-sitemap.js
+
+npm run build-sitemap
