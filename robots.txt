@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://radarf5.com.br/sitemap.xml
+Sitemap: https://radarf5.com/sitemap-index.xml
