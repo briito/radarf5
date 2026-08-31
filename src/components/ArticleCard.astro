@@ -1,0 +1,47 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  image: string;
+  imageAlt: string;
+  href: string;
+}
+
+const {
+  title,
+  description,
+  category,
+  image,
+  imageAlt,
+  href
+} = Astro.props;
+---
+
+<article class="offer-card">
+  <picture class="featured-image">
+    <img
+      src={image}
+      alt={imageAlt}
+      width="1200"
+      height="675"
+      loading="lazy"
+    />
+  </picture>
+
+  <span class="offer-badge">{category}</span>
+
+  <h3>
+    <a href={href}>{title}</a>
+  </h3>
+
+  <p class="article-card-description">
+    {description}
+  </p>
+
+  <div class="article-card-action">
+    <a href={href} class="btn btn-primary">
+      Ler Artigo Completo &rarr;
+    </a>
+  </div>
+</article>
