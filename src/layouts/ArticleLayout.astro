@@ -11,23 +11,16 @@ interface Props {
   imageAlt: string;
 }
 
-const {
-  title,
-  description,
-  author,
-  pubDate,
-  category,
-  image,
-  imageAlt
-} = Astro.props;
+const { title, description, author, pubDate, category, image, imageAlt } =
+  Astro.props;
 
 const formattedDate = new Date(`${pubDate}T00:00:00`).toLocaleDateString(
   "pt-BR",
   {
     day: "2-digit",
     month: "long",
-    year: "numeric"
-  }
+    year: "numeric",
+  },
 );
 ---
 
@@ -55,7 +48,7 @@ const formattedDate = new Date(`${pubDate}T00:00:00`).toLocaleDateString(
     </div>
   </header>
 
-  <main class="container">
+  <div class="container">
     <article class="main-article">
       <picture class="featured-image">
         <img
@@ -71,5 +64,5 @@ const formattedDate = new Date(`${pubDate}T00:00:00`).toLocaleDateString(
         <slot />
       </section>
     </article>
-  </main>
+  </div>
 </BaseLayout>
