@@ -7,16 +7,21 @@ interface Props {
   title: string;
   description?: string;
   canonical?: string;
+  image?: string;
+  type?: "website" | "article";
 }
 
 const {
   title,
   description = "Radar F5 — Tecnologia, inovação, guias e informações para você ficar sempre atualizado.",
-  canonical
+  canonical,
+  image,
+  type = "website"
 } = Astro.props;
 
 const siteUrl = "https://radarf5.com";
 const canonicalUrl = canonical ?? `${siteUrl}${Astro.url.pathname}`;
+const imageUrl = image ? `${siteUrl}${image}` : undefined;
 ---
 
 <!doctype html>
@@ -32,22 +37,22 @@ const canonicalUrl = canonical ?? `${siteUrl}${Astro.url.pathname}`;
 
     <link rel="canonical" href={canonicalUrl} />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content="Radar F5" />
 
+    {imageUrl && <meta property="og:image" content={imageUrl} />}
+
     <slot name="head" />
   </head>
 
   <body>
-     <Header />
+    <Header />
 
-  <main>
     <slot />
-  </main>
 
-  <Footer />
+    <Footer />
   </body>
 </html>

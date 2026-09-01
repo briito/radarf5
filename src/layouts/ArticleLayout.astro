@@ -31,7 +31,12 @@ const formattedDate = new Date(`${pubDate}T00:00:00`).toLocaleDateString(
 );
 ---
 
-<BaseLayout title={`${title} - Radar F5`} description={description}>
+<BaseLayout
+  title={`${title} - Radar F5`}
+  description={description}
+  image={image}
+  type="article"
+>
   <header class="site-header">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
