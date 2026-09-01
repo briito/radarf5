@@ -19,31 +19,47 @@ const {
   type = "website"
 } = Astro.props;
 
-const siteUrl = "https://radarf5.com";
-const canonicalUrl = canonical ?? `${siteUrl}${Astro.url.pathname}`;
-const imageUrl = image ? `${siteUrl}${image}` : undefined;
+// Utiliza o 'site' definido no astro.config.mjs para dinamicamente gerar URLs absolutas (ideal para subdomínios)
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
+const imageUrl = image ? new URL(image, Astro.site).href : undefined;
+
+// Substitua pelo seu código de cliente do Google AdSense
+const ADSENSE_CLIENT_ID = "ca-pub-XXXXXXXXXXXXXXXX"; 
 ---
 
 <!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Título e SEO Principal -->
     <title>{title}</title>
-
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-
     <link rel="canonical" href={canonicalUrl} />
 
+    <!-- Open Graph / Redes Sociais -->
     <meta property="og:type" content={type} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content="Radar F5" />
-
     {imageUrl && <meta property="og:image" content={imageUrl} />}
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {imageUrl && <meta name="twitter:image" content={imageUrl} />}
+
+    <!-- Google AdSense -->
+    <script
+      is:inline
+      async
+      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
+      crossorigin="anonymous">
+    </script>
 
     <slot name="head" />
   </head>
@@ -51,7 +67,9 @@ const imageUrl = image ? `${siteUrl}${image}` : undefined;
   <body>
     <Header />
 
-    <slot />
+    <main id="main-content">
+      <slot />
+    </main>
 
     <Footer />
   </body>
