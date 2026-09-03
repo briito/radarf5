@@ -338,6 +338,60 @@ tr:hover {
     white-space: nowrap;
 }
 
+/* Botão do formulário de contato */
+.contact-form button[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 14px 24px;
+
+  background: #111827;
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+
+  border: 1px solid #111827;
+  border-radius: 8px;
+
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Quando passa o mouse */
+.contact-form button[type="submit"]:hover {
+  background: #1f2937;
+  border-color: #1f2937;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}
+
+/* Quando clica */
+.contact-form button[type="submit"]:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+/* Quando recebe foco pelo teclado */
+.contact-form button[type="submit"]:focus-visible {
+  outline: 3px solid rgba(17, 24, 39, 0.25);
+  outline-offset: 2px;
+}
+
+/* Estado desabilitado */
+.contact-form button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
 /* ==========================================================================
    8. AJUSTES PARA DISPOSITIVOS MÓVEIS (Smartphones)
    ========================================================================== */

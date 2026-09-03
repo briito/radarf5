@@ -24,6 +24,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       style="border-color: var(--border-color); display: block;"
     >
       <form
+        class="contact-form"
         id="contact-form"
         action="/api/contact"
         method="POST"
@@ -81,7 +82,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </div>
 
         <div>
-          <button type="submit" class="btn btn-primary" style="border: none;">
+          <button type="submit" class="btn btn-primary">
             Enviar Mensagem
           </button>
         </div>
@@ -89,7 +90,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </section>
   </section>
 </BaseLayout>
-```
+
 <script>
   const form = document.querySelector("#contact-form");
 
@@ -99,7 +100,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     const formElement = event.currentTarget;
 
     if (!(formElement instanceof HTMLFormElement)) return;
-    
+
     const button = formElement.querySelector("button[type='submit']");
 
     const formData = new FormData(formElement);
