@@ -6,39 +6,41 @@ import ArticleCard from "../components/ArticleCard.astro";
 const articles = await getCollection("articles", ({ data }) => {
   return data.draft !== true;
 });
-
 ---
 
 <BaseLayout
-  title="Radar F5 — Análises, Comparativos e Guias de Compras"
-  description="Radar F5 — análises imparcial, comparativo detalhado e guia de compras, para ajudar você a fazer a melhor escolha pelo menor preço."
+  title="Radar F5 — Reviews, Comparativos e Guias de Compra"
+  description="Reviews, comparativos e guias de compra para ajudar você a escolher melhor antes de comprar."
 >
   <section class="container hero-section">
     <div class="callout-box">
-      <h1>Análise imparcial, comparativo e guia de compras</h1>
+      <h1>Reviews, comparativos e guias de compra</h1>
 
       <p>
-        Seja bem-vindo ao <strong>Radar F5</strong>
+        Seja bem-vindo ao <strong>Radar F5</strong>.
       </p>
-       <p>
-        Descubra qual produto vale o seu investimento antes de comprar.
+
+      <p>
+        Analisamos produtos, comparamos suas características e mostramos os
+        principais pontos que você deve considerar antes de comprar.
       </p>
-      
     </div>
   </section>
 
   <section class="container articles-grid">
     <h2>Artigos em Destaque</h2>
 
-    {articles.map((article) => (
-      <ArticleCard
-        title={article.data.title}
-        description={article.data.description}
-        category={article.data.category}
-        image={article.data.image}
-        imageAlt={article.data.imageAlt}
-        href={`/artigos/${article.id}/`}
-      />
-    ))}
+    {
+      articles.map((article) => (
+        <ArticleCard
+          title={article.data.title}
+          description={article.data.description}
+          category={article.data.category}
+          image={article.data.image}
+          imageAlt={article.data.imageAlt}
+          href={`/artigos/${article.id}/`}
+        />
+      ))
+    }
   </section>
 </BaseLayout>

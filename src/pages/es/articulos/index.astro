@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ArticleCard from "../../../components/ArticleCard.astro";
+
+const articles = await getCollection("articles", ({ data }) => {
+    return data.draft !== true && data.language === "es";
+});
+---
+
+<BaseLayout
+    title="Artículos - Radar F5"
+    description="Reviews, comparativas y guías de compra de Radar F5."
+    lang="es"
+    locale="es_ES"
+>
+    <section class="container hero-section">
+        <div class="callout-box">
+            <h1>Artículos</h1>
+
+            <p>
+                Reviews, comparativas y guías de compra para ayudarte a tomar
+                mejores decisiones antes de comprar.
+            </p>
+        </div>
+    </section>
+
+    <section class="container articles-grid">
+        <h2>Todos los Artículos</h2>
+
+        {
+            articles.length > 0 ? (
+                articles.map((article) => (
+                    <ArticleCard
+                        title={article.data.title}
+                        description={article.data.description}
+                        category={article.data.category}
+                        image={article.data.image}
+                        imageAlt={article.data.imageAlt}
+                        href={`/es/articulos/${article.id}/`}
+                    />
+                ))
+            ) : (
+                <p>
+                    Nuestros artículos en español estarán disponibles
+                    próximamente.
+                </p>
+            )
+        }
+    </section>
+</BaseLayout>

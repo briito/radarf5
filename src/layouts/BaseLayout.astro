@@ -9,26 +9,26 @@ interface Props {
   canonical?: string;
   image?: string;
   type?: "website" | "article";
+  lang?: "pt-BR" | "en" | "es";
+  locale?: "pt_BR" | "en_US" | "es_ES";
 }
 
 const {
   title,
-  description = "Radar F5 — Tecnologia, inovação, guias e informações para você ficar sempre atualizado.",
+  description = "Radar F5 — Reviews, comparativos e guias de compra para ajudar você a escolher melhor antes de comprar.",
   canonical,
   image,
-  type = "website"
+  type = "website",
+  lang = "pt-BR",
+  locale = "pt_BR",
 } = Astro.props;
 
-// Utiliza o 'site' definido no astro.config.mjs para dinamicamente gerar URLs absolutas (ideal para subdomínios)
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
 const imageUrl = image ? new URL(image, Astro.site).href : undefined;
-
-// Substitua pelo seu código de cliente do Google AdSense
-const ADSENSE_CLIENT_ID = "ca-pub-XXXXXXXXXXXXXXXX"; 
 ---
 
 <!doctype html>
-<html lang="pt-BR">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -45,39 +45,36 @@ const ADSENSE_CLIENT_ID = "ca-pub-XXXXXXXXXXXXXXXX";
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content="Radar F5" />
-    {imageUrl && (
-  <>
-    <meta property="og:image" content={imageUrl} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="675" />
-  </>
-)}
-<meta property="og:locale" content="pt_BR" />
+
+    {
+      imageUrl && (
+        <>
+          <meta property="og:image" content={imageUrl} />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="675" />
+        </>
+      )
+    }
+
+    <meta property="og:locale" content={locale} />
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    {imageUrl && <meta name="twitter:image" content={imageUrl} />}
 
-    <!-- Google AdSense -->
-    <script
-      is:inline
-      async
-      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
-      crossorigin="anonymous">
-    </script>
+    {imageUrl && <meta name="twitter:image" content={imageUrl} />}
 
     <slot name="head" />
   </head>
 
   <body>
-    <Header />
+    <Header lang={lang} />
 
     <main id="main-content">
       <slot />
     </main>
 
-    <Footer />
+   <Footer lang={lang} />
   </body>
 </html>

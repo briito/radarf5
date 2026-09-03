@@ -1,14 +1,62 @@
+---
+interface Props {
+  lang?: "pt-BR" | "en" | "es";
+}
+
+const { lang = "pt-BR" } = Astro.props;
+
+const footer = {
+  "pt-BR": {
+    rights: "Todos os direitos reservados.",
+    about: "Sobre Nós",
+    contact: "Contato",
+    privacy: "Política de Privacidade",
+    terms: "Termos de Uso",
+    aboutUrl: "/sobre-nos/",
+    contactUrl: "/contato/",
+    privacyUrl: "/politica-de-privacidade/",
+    termsUrl: "/termos-de-uso/",
+  },
+
+  en: {
+    rights: "All rights reserved.",
+    about: "About Us",
+    contact: "Contact",
+    privacy: "Privacy Policy",
+    terms: "Terms of Use",
+    aboutUrl: "/en/about-us/",
+    contactUrl: "/en/contact/",
+    privacyUrl: "/en/privacy-policy/",
+    termsUrl: "/en/terms-of-use/",
+  },
+
+  es: {
+    rights: "Todos los derechos reservados.",
+    about: "Sobre Nosotros",
+    contact: "Contacto",
+    privacy: "Política de Privacidad",
+    terms: "Términos de Uso",
+    aboutUrl: "/es/sobre-nosotros/",
+    contactUrl: "/es/contacto/",
+    privacyUrl: "/es/politica-de-privacidad/",
+    termsUrl: "/es/terminos-de-uso/",
+  },
+};
+
+const currentFooter = footer[lang];
+---
+
 <footer class="site-footer">
   <div class="container">
     <p>
-      &copy; 2026 <strong>Radar F5</strong>. Todos os direitos reservados.
+      &copy; 2026 <strong>Radar F5</strong>. {currentFooter.rights}
     </p>
 
     <nav class="footer-links">
-      <a href="/sobre-nos/">Sobre Nós</a>
-      <a href="/contato/">Contato</a>
-      <a href="/politica-de-privacidade/">Política de Privacidade</a>
-      <a href="/termos-de-uso/">Termos de Uso</a>
+      <a href={currentFooter.aboutUrl}>{currentFooter.about}</a>
+      <a href={currentFooter.contactUrl}>{currentFooter.contact}</a>
+      <a href={currentFooter.privacyUrl}>{currentFooter.privacy}</a>
+      <a href={currentFooter.termsUrl}>{currentFooter.terms}</a>
     </nav>
   </div>
 </footer>

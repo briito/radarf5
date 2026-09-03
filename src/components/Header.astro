@@ -1,17 +1,74 @@
+---
+interface Props {
+  lang?: "pt-BR" | "en" | "es";
+}
+
+const { lang = "pt-BR" } = Astro.props;
+
+const navigation = {
+  "pt-BR": {
+    ariaLabel: "Navegação principal",
+    home: "Home",
+    articles: "Artigos",
+    about: "Sobre Nós",
+    homeUrl: "/",
+    articlesUrl: "/artigos/",
+    aboutUrl: "/sobre-nos/",
+  },
+
+  en: {
+    ariaLabel: "Main navigation",
+    home: "Home",
+    articles: "Articles",
+    about: "About Us",
+    homeUrl: "/en/",
+    articlesUrl: "/en/articles/",
+    aboutUrl: "/en/about-us/",
+  },
+
+  es: {
+    ariaLabel: "Navegación principal",
+    home: "Inicio",
+    articles: "Artículos",
+    about: "Sobre Nosotros",
+    homeUrl: "/es/",
+    articlesUrl: "/es/articulos/",
+    aboutUrl: "/es/sobre-nosotros/",
+  },
+};
+
+const currentNavigation = navigation[lang];
+---
+
 <header class="site-header">
   <div class="container header-inner">
     <div class="brand">
-      <a href="/">
+      <a href={currentNavigation.homeUrl}>
         RADAR<span>F5</span>
       </a>
     </div>
 
-    <nav class="main-nav" aria-label="Navegação principal">
+    <nav class="main-nav" aria-label={currentNavigation.ariaLabel}>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/artigos/melhores-notebooks-2026/">Notebooks</a></li>
-        <li><a href="/sobre-nos/">Sobre Nós</a></li>
+        <li>
+          <a href={currentNavigation.homeUrl}>
+            {currentNavigation.home}
+          </a>
+        </li>
+
+        <li>
+          <a href={currentNavigation.articlesUrl}>
+            {currentNavigation.articles}
+          </a>
+        </li>
+
+        <li>
+          <a href={currentNavigation.aboutUrl}>
+            {currentNavigation.about}
+          </a>
+        </li>
       </ul>
     </nav>
   </div>
 </header>
+```

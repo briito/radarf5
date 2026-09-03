@@ -9,19 +9,62 @@ interface Props {
   category: string;
   image: string;
   imageAlt: string;
+  lang?: "pt-BR" | "en" | "es";
 }
 
-const { title, description, author, pubDate, category, image, imageAlt } =
-  Astro.props;
+const {
+  title,
+  description,
+  author,
+  pubDate,
+  category,
+  image,
+  imageAlt,
+  lang = "pt-BR",
+} = Astro.props;
+
+const localization = {
+  "pt-BR": {
+    locale: "pt-BR",
+    home: "Home",
+    articles: "Artigos",
+    by: "Por",
+    reading: "Calculando tempo de leitura...",
+  },
+
+  en: {
+    locale: "en-US",
+    home: "Home",
+    articles: "Articles",
+    by: "By",
+    reading: "Calculating reading time...",
+  },
+
+  es: {
+    locale: "es-ES",
+    home: "Inicio",
+    articles: "Artículos",
+    by: "Por",
+    reading: "Calculando tiempo de lectura...",
+  },
+};
+
+const current = localization[lang];
 
 const formattedDate = new Date(`${pubDate}T00:00:00`).toLocaleDateString(
-  "pt-BR",
+  current.locale,
   {
     day: "2-digit",
     month: "long",
     year: "numeric",
   },
 );
+
+const localeMap = {
+  "pt-BR": "pt_BR",
+  en: "en_US",
+  es: "es_ES",
+} as const;
 ---
 
 <BaseLayout
@@ -29,21 +72,48 @@ const formattedDate = new Date(`${pubDate}T00:00:00`).toLocaleDateString(
   description={description}
   image={image}
   type="article"
+  lang={lang}
+  locale={localeMap[lang]}
 >
   <header class="site-header">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a> &gt; <span>Artigos</span>
+        <a href={lang === "pt-BR" ? "/" : `/${lang}/`}>
+          {current.home}
+        </a>
+
+        <span aria-hidden="true"> &gt; </span>
+
+        <a
+          href={lang === "pt-BR"
+            ? "/artigos/"
+            : lang === "en"
+              ? "/en/articles/"
+              : "/es/articulos/"}
+        >
+          {current.articles}
+        </a>
+
+        <span aria-hidden="true"> &gt; </span>
+
+        <span>{category}</span>
       </nav>
 
       <h1 class="article-title">{title}</h1>
 
       <div class="meta-info">
-        <span>Por <strong>{author}</strong></span>
+        <span>
+          {current.by}
+          <strong>{author}</strong>
+        </span>
+
         <span>|</span>
+
         <time datetime={pubDate}>{formattedDate}</time>
+
         <span>|</span>
-        <span id="reading-time">Calculando tempo de leitura...</span>
+
+        <span id="reading-time">{current.reading}</span>
       </div>
     </div>
   </header>
