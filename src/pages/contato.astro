@@ -3,69 +3,134 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="Política de Privacidade - Radar F5"
-  description="Política de privacidade do Radar F5. Saiba como coletamos, usamos e protegemos seus dados pessoais de acordo com a LGPD."
+  title="Contato - Radar F5"
+  description="Fale com a equipe do Radar F5. Envie sugestões, dúvidas ou propostas comerciais."
 >
-  <div class="container" style="margin-top: 30px;">
-    <article>
-      <h1>Política de Privacidade</h1>
+  <section class="container hero-section">
+    <h1>Fale Conosco</h1>
 
-      <p><em>Última atualização: Agosto de 2026</em></p>
+    <p>
+      Tem alguma dúvida sobre nossas análises, sugestão de pauta ou proposta de
+      parceria comercial? Envie um e-mail para nossa equipe e responderemos o
+      mais breve possível.
+    </p>
 
-      <p>
-        No <strong>Radar F5</strong> (acessível em
-        <a href="https://radarf5.com">radarf5.com</a>), a privacidade dos
-        nossos visitantes é uma das nossas principais prioridades. Este
-        documento detalha os tipos de informações que coletamos e como as
-        utilizamos.
-      </p>
+    <div class="callout-box">
+      <p>radarf5web@gmail.com</p>
+    </div>
 
-      <h2>1. Coleta de Informações e Dados Pessoais</h2>
+    <section
+      class="offer-card"
+      style="border-color: var(--border-color); display: block;"
+    >
+      <form
+        id="contact-form"
+        action="/api/contact"
+        method="POST"
+        style="display: flex; flex-direction: column; gap: 15px;"
+      >
+        <div>
+          <label
+            for="nome"
+            style="display: block; font-weight: bold; margin-bottom: 5px;"
+          >
+            Seu Nome:
+          </label>
 
-      <p>
-        Coletamos dados fornecidos voluntariamente por você (como nome e
-        e-mail ao preencher o formulário de contato) ou dados coletados
-        automaticamente durante a sua navegação (como endereço IP, tipo de
-        navegador, páginas visitadas e tempo de permanência).
-      </p>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            required
+            style="width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 6px;"
+          />
+        </div>
 
-      <h2>2. Cookies e Web Beacons</h2>
+        <div>
+          <label
+            for="email"
+            style="display: block; font-weight: bold; margin-bottom: 5px;"
+          >
+            Seu E-mail:
+          </label>
 
-      <p>
-        Como qualquer outro site, o Radar F5 utiliza "cookies" para armazenar
-        informações, incluindo as preferências dos visitantes e as páginas
-        acessadas. Essas informações são usadas para otimizar a experiência
-        do usuário, personalizando o conteúdo com base no tipo de navegador.
-      </p>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            style="width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 6px;"
+          />
+        </div>
 
-      <h2>3. Cookie Google DoubleClick DART</h2>
+        <div>
+          <label
+            for="mensagem"
+            style="display: block; font-weight: bold; margin-bottom: 5px;"
+          >
+            Mensagem:
+          </label>
 
-      <p>
-        O Google é um fornecedor terceiro em nosso site. Ele utiliza cookies
-        (conhecidos como cookies DART) para exibir anúncios aos visitantes do
-        nosso site com base nas visitas feitas a este e a outros sites na
-        Internet. Os visitantes podem optar por desativar o uso do cookie
-        DART visitando a Política de Privacidade da rede de conteúdo e anúncios
-        do Google.
-      </p>
+          <textarea
+            id="mensagem"
+            name="mensagem"
+            rows="5"
+            required
+            style="width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 6px;"
+          ></textarea>
+        </div>
 
-      <h2>4. Conformidade com a LGPD (Lei Geral de Proteção de Dados)</h2>
-
-      <p>
-        Em conformidade com a LGPD (Lei nº 13.709/2018), garantimos ao usuário
-        o direito de acessar, corrigir, anonimizar ou solicitar a exclusão de
-        seus dados pessoais coletados por este site. Para exercer esses
-        direitos, entre em contato através do e-mail
-        <strong>radarf5web@gmail.com</strong>.
-      </p>
-
-      <h2>5. Alterações nesta Política</h2>
-
-      <p>
-        Reservamo-nos o direito de atualizar esta política a qualquer momento.
-        Recomendamos que você revise esta página periodicamente para se manter
-        informado sobre como estamos protegendo suas informações.
-      </p>
-    </article>
-  </div>
+        <div>
+          <button type="submit" class="btn btn-primary" style="border: none;">
+            Enviar Mensagem
+          </button>
+        </div>
+      </form>
+    </section>
+  </section>
 </BaseLayout>
+```
+<script>
+  const form = document.querySelector("#contact-form");
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const formElement = event.currentTarget;
+
+    if (!(formElement instanceof HTMLFormElement)) return;
+    
+    const button = formElement.querySelector("button[type='submit']");
+
+    const formData = new FormData(formElement);
+
+    if (button instanceof HTMLButtonElement) {
+      button.disabled = true;
+      button.textContent = "Enviando...";
+    }
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert("Mensagem enviada com sucesso!");
+        formElement.reset();
+      } else {
+        alert(result.message || "Não foi possível enviar a mensagem.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Ocorreu um erro. Tente novamente.");
+    } finally {
+      if (button instanceof HTMLButtonElement) {
+        button.disabled = false;
+        button.textContent = "Enviar Mensagem";
+      }
+    }
+  });
+</script>

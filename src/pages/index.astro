@@ -10,23 +10,25 @@ const articles = await getCollection("articles", ({ data }) => {
 ---
 
 <BaseLayout
-  title="Radar F5 — Tecnologia, inovação e guias de compra"
-  description="Radar F5 — análises de tecnologia, notebooks, hardware, periféricos e guias para ajudar você a fazer melhores escolhas."
+  title="Radar F5 — Análises, Comparativos e Guias de Compras"
+  description="Radar F5 — análises imparcial, comparativo detalhado e guia de compras, para ajudar você a fazer a melhor escolha pelo menor preço."
 >
   <section class="container hero-section">
     <div class="callout-box">
-      <h1>As Melhores Análises de Tecnologia em 2026</h1>
+      <h1>Análise imparcial, comparativo e guia de compras</h1>
 
       <p>
-        Seja bem-vindo ao <strong>Radar F5</strong>. Nosso objetivo é simplificar
-        a escolha de hardware, notebooks e periféricos através de análises
-        técnicas objetivas e seleção diária de ofertas atrativas.
+        Seja bem-vindo ao <strong>Radar F5</strong>
       </p>
+       <p>
+        Descubra qual produto vale o seu investimento antes de comprar.
+      </p>
+      
     </div>
   </section>
 
   <section class="container articles-grid">
-    <h2>Artigos e Guias em Destaque</h2>
+    <h2>Artigos em Destaque</h2>
 
     {articles.map((article) => (
       <ArticleCard
