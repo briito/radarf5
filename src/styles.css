@@ -447,3 +447,37 @@ tr:hover {
     color: var(--text-primary);
     text-decoration: none;
 }
+
+/* Espaços reservados para anúncios (AdSense) / ofertas de afiliado.
+   Enquanto não houver AdSense nem oferta configurada, .ad-slot não é
+   renderizado — por isso não existe uma classe de "vazio" aqui. */
+.ad-slot {
+    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.ad-slot--adsense {
+    width: 100%;
+    min-height: 250px; /* reserva o espaço do anúncio e evita layout shift */
+}
+
+.ad-slot__card {
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    align-items: center;
+}
+
+.ad-slot__price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin: 0;
+}
+
+.ad-slot__disclosure {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin: 4px 0 0;
+}

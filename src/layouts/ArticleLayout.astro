@@ -1,5 +1,15 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import AdSlot from "../components/AdSlot.astro";
+
+interface AffiliateProduct {
+  name: string;
+  image: string;
+  imageAlt?: string;
+  price?: string;
+  url: string;
+  ctaText?: string;
+}
 
 interface Props {
   title: string;
@@ -10,6 +20,8 @@ interface Props {
   image: string;
   imageAlt: string;
   lang?: "pt-BR" | "en" | "es";
+  readingTime: number;
+  affiliateProduct?: AffiliateProduct;
 }
 
 const {
@@ -21,6 +33,8 @@ const {
   image,
   imageAlt,
   lang = "pt-BR",
+  readingTime,
+  affiliateProduct,
 } = Astro.props;
 
 const localization = {
@@ -29,7 +43,7 @@ const localization = {
     home: "Home",
     articles: "Artigos",
     by: "Por",
-    reading: "Calculando tempo de leitura...",
+    reading: (min: number) => `${min} min de leitura`,
   },
 
   en: {
@@ -37,7 +51,7 @@ const localization = {
     home: "Home",
     articles: "Articles",
     by: "By",
-    reading: "Calculating reading time...",
+    reading: (min: number) => `${min} min read`,
   },
 
   es: {
@@ -45,7 +59,7 @@ const localization = {
     home: "Inicio",
     articles: "Artículos",
     by: "Por",
-    reading: "Calculando tiempo de lectura...",
+    reading: (min: number) => `${min} min de lectura`,
   },
 };
 
@@ -113,7 +127,7 @@ const localeMap = {
 
         <span>|</span>
 
-        <span id="reading-time">{current.reading}</span>
+        <span id="reading-time">{current.reading(readingTime)}</span>
       </div>
     </div>
   </header>
@@ -133,6 +147,8 @@ const localeMap = {
       <section class="article-body">
         <slot />
       </section>
+
+      <AdSlot position="end" affiliateProduct={affiliateProduct} />
     </article>
   </div>
 </BaseLayout>

@@ -4,7 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import ArticleCard from "../components/ArticleCard.astro";
 
 const articles = await getCollection("articles", ({ data }) => {
-  return data.draft !== true;
+  return data.draft !== true && data.language === "pt";
 });
 ---
 

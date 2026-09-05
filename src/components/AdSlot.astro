@@ -1,0 +1,31 @@
+---
+import { buildAdSlotHtml } from "../lib/ad-slot-html.js";
+
+interface AffiliateProduct {
+  name: string;
+  image: string;
+  imageAlt?: string;
+  price?: string;
+  url: string;
+  ctaText?: string;
+}
+
+interface Props {
+  position: "end";
+  affiliateProduct?: AffiliateProduct;
+}
+
+const { position, affiliateProduct } = Astro.props;
+
+const adsEnabled = import.meta.env.ADS_ENABLED === "true";
+
+const html = buildAdSlotHtml({
+  enabled: adsEnabled,
+  position,
+  adsenseClientId: import.meta.env.ADSENSE_CLIENT_ID,
+  adsenseSlotId: import.meta.env.ADSENSE_SLOT_END,
+  affiliateProduct,
+});
+---
+
+{html && <Fragment set:html={html} />}

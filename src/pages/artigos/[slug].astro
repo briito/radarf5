@@ -23,6 +23,9 @@ const { article } = Astro.props;
 
 const { data } = article;
 const { Content } = await render(article);
+
+const wordCount = article.body?.trim().split(/\s+/).filter(Boolean).length ?? 0;
+const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 ---
 
 <ArticleLayout
@@ -33,6 +36,8 @@ const { Content } = await render(article);
   category={data.category}
   image={data.image}
   imageAlt={data.imageAlt}
+  readingTime={readingTime}
+  affiliateProduct={data.affiliateProduct}
 >
   <Content />
 </ArticleLayout>

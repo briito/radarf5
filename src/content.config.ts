@@ -20,6 +20,20 @@ const articles = defineCollection({
     image: z.string(),
     imageAlt: z.string().default("Imagem ilustrativa"),
     draft: z.boolean().optional().default(false),
+    // Card de oferta/afiliado exibido no espaço reservado para anúncios
+    // (no meio do artigo) enquanto o AdSense ainda não está ativo.
+    // Quando ADS_ENABLED=true, esse espaço passa a mostrar o anúncio do
+    // AdSense no lugar deste card automaticamente — não precisa remover.
+    affiliateProduct: z
+      .object({
+        name: z.string(),
+        image: z.string(),
+        imageAlt: z.string().optional(),
+        price: z.string().optional(),
+        url: z.string().url(),
+        ctaText: z.string().optional(),
+      })
+      .optional(),
   }),
 });
 

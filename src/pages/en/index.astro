@@ -1,5 +1,11 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+
+const articles = await getCollection("articles", ({ data }) => {
+    return data.draft !== true && data.language === "en";
+});
 ---
 
 <BaseLayout
@@ -24,6 +30,21 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <section class="container articles-grid">
         <h2>Featured Articles</h2>
 
-        <p>Our English articles will be available here soon.</p>
+        {
+            articles.length > 0 ? (
+                articles.map((article) => (
+                    <ArticleCard
+                        title={article.data.title}
+                        description={article.data.description}
+                        category={article.data.category}
+                        image={article.data.image}
+                        imageAlt={article.data.imageAlt}
+                        href={`/en/articles/${article.id}/`}
+                    />
+                ))
+            ) : (
+                <p>Our English articles will be available here soon.</p>
+            )
+        }
     </section>
 </BaseLayout>

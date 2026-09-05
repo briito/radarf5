@@ -83,6 +83,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           ></textarea>
         </div>
 
+        <div
+          aria-hidden="true"
+          style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;"
+        >
+          <label for="website">Deixe este campo em branco:</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+
         <div>
           <button type="submit" class="btn btn-primary">
             Enviar Mensagem

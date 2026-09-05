@@ -65,6 +65,16 @@ const imageUrl = image ? new URL(image, Astro.site).href : undefined;
 
     {imageUrl && <meta name="twitter:image" content={imageUrl} />}
 
+    {
+      import.meta.env.ADS_ENABLED === "true" && import.meta.env.ADSENSE_CLIENT_ID && (
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${import.meta.env.ADSENSE_CLIENT_ID}`}
+          crossorigin="anonymous"
+        ></script>
+      )
+    }
+
     <slot name="head" />
   </head>
 

@@ -10,7 +10,7 @@ language: "es"
 translationKey: "melhores-notebooks-2026"
 image: "/images/notebooks-2026-1200x675.webp"
 imageAlt: "Mejores portátiles para programar en 2026"
------------------------------------------------------
+---
 
 # Mejores Portátiles para Programar en 2026
 
