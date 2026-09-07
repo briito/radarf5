@@ -9,8 +9,6 @@ interface Props {
   canonical?: string;
   image?: string;
   type?: "website" | "article";
-  lang?: "pt-BR" | "en" | "es";
-  locale?: "pt_BR" | "en_US" | "es_ES";
 }
 
 const {
@@ -19,8 +17,6 @@ const {
   canonical,
   image,
   type = "website",
-  lang = "pt-BR",
-  locale = "pt_BR",
 } = Astro.props;
 
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
@@ -28,7 +24,7 @@ const imageUrl = image ? new URL(image, Astro.site).href : undefined;
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -56,7 +52,7 @@ const imageUrl = image ? new URL(image, Astro.site).href : undefined;
       )
     }
 
-    <meta property="og:locale" content={locale} />
+    <meta property="og:locale" content="pt_BR" />
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -79,12 +75,12 @@ const imageUrl = image ? new URL(image, Astro.site).href : undefined;
   </head>
 
   <body>
-    <Header lang={lang} />
+    <Header />
 
     <main id="main-content">
       <slot />
     </main>
 
-   <Footer lang={lang} />
+    <Footer />
   </body>
 </html>

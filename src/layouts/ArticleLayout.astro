@@ -19,7 +19,6 @@ interface Props {
   category: string;
   image: string;
   imageAlt: string;
-  lang?: "pt-BR" | "en" | "es";
   readingTime: number;
   affiliateProduct?: AffiliateProduct;
 }
@@ -32,53 +31,18 @@ const {
   category,
   image,
   imageAlt,
-  lang = "pt-BR",
   readingTime,
   affiliateProduct,
 } = Astro.props;
 
-const localization = {
-  "pt-BR": {
-    locale: "pt-BR",
-    home: "Home",
-    articles: "Artigos",
-    by: "Por",
-    reading: (min: number) => `${min} min de leitura`,
-  },
-
-  en: {
-    locale: "en-US",
-    home: "Home",
-    articles: "Articles",
-    by: "By",
-    reading: (min: number) => `${min} min read`,
-  },
-
-  es: {
-    locale: "es-ES",
-    home: "Inicio",
-    articles: "Artículos",
-    by: "Por",
-    reading: (min: number) => `${min} min de lectura`,
-  },
-};
-
-const current = localization[lang];
-
 const formattedDate = new Date(`${pubDate}T00:00:00`).toLocaleDateString(
-  current.locale,
+  "pt-BR",
   {
     day: "2-digit",
     month: "long",
     year: "numeric",
   },
 );
-
-const localeMap = {
-  "pt-BR": "pt_BR",
-  en: "en_US",
-  es: "es_ES",
-} as const;
 ---
 
 <BaseLayout
@@ -86,27 +50,15 @@ const localeMap = {
   description={description}
   image={image}
   type="article"
-  lang={lang}
-  locale={localeMap[lang]}
 >
   <header class="site-header">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href={lang === "pt-BR" ? "/" : `/${lang}/`}>
-          {current.home}
-        </a>
+        <a href="/">Home</a>
 
         <span aria-hidden="true"> &gt; </span>
 
-        <a
-          href={lang === "pt-BR"
-            ? "/artigos/"
-            : lang === "en"
-              ? "/en/articles/"
-              : "/es/articulos/"}
-        >
-          {current.articles}
-        </a>
+        <a href="/artigos/">Artigos</a>
 
         <span aria-hidden="true"> &gt; </span>
 
@@ -117,7 +69,7 @@ const localeMap = {
 
       <div class="meta-info">
         <span>
-          {current.by}
+          Por
           <strong>{author}</strong>
         </span>
 
@@ -127,7 +79,7 @@ const localeMap = {
 
         <span>|</span>
 
-        <span id="reading-time">{current.reading(readingTime)}</span>
+        <span id="reading-time">{readingTime} min de leitura</span>
       </div>
     </div>
   </header>

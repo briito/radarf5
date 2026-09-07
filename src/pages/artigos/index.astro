@@ -4,7 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import ArticleCard from "../../components/ArticleCard.astro";
 
 const articles = await getCollection("articles", ({ data }) => {
-    return data.draft !== true && data.language === "pt";
+    return data.draft !== true;
 });
 ---
 
@@ -34,7 +34,7 @@ const articles = await getCollection("articles", ({ data }) => {
                     category={article.data.category}
                     image={article.data.image}
                     imageAlt={article.data.imageAlt}
-                    href={`/artigos/${article.id}/`}
+                    href={`/artigos/${article.data.slug}/`}
                 />
             ))
         }
