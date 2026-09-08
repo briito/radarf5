@@ -28,8 +28,15 @@ const articles = defineCollection({
         image: z.string(),
         imageAlt: z.string().optional(),
         price: z.string().optional(),
-        url: z.string().url(),
-        ctaText: z.string().optional(),
+        links: z
+          .array(
+            z.object({
+              label: z.string(),
+              url: z.string().url(),
+              price: z.string().optional(),
+            }),
+          )
+          .min(1),
       })
       .optional(),
   }),

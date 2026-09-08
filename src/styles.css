@@ -476,6 +476,30 @@ tr:hover {
     margin: 0;
 }
 
+.ad-slot__links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.ad-slot__link-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ad-slot__link-price {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.ad-slot__link {
+    width: 100%;
+    text-align: center;
+}
+
 .ad-slot__disclosure {
     font-size: 0.75rem;
     color: var(--text-muted);

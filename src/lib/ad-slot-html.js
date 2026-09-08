@@ -40,7 +40,19 @@ function buildAdsenseHtml({ position, adsenseClientId, adsenseSlotId }) {
 }
 
 function buildAffiliateHtml({ position, affiliateProduct }) {
-  const { name, image, imageAlt, price, url, ctaText } = affiliateProduct;
+  const { name, image, imageAlt, price, links } = affiliateProduct;
+
+  const buttonsHtml = links
+    .map(
+      ({ label, url, price }) => `
+        <div class="ad-slot__link-group">
+          ${price ? `<span class="ad-slot__link-price">${escapeHtml(price)}</span>` : ""}
+          <a href="${escapeHtml(url)}" class="btn-offer ad-slot__link" rel="sponsored noopener" target="_blank">
+            ${escapeHtml(label)}
+          </a>
+        </div>`,
+    )
+    .join("");
 
   return `
     <div class="ad-slot ad-slot--affiliate ad-slot--${position}">
@@ -50,9 +62,7 @@ function buildAffiliateHtml({ position, affiliateProduct }) {
         </picture>
         <h3 class="offer-title">${escapeHtml(name)}</h3>
         ${price ? `<p class="ad-slot__price">${escapeHtml(price)}</p>` : ""}
-        <a href="${escapeHtml(url)}" class="btn-offer" rel="sponsored noopener" target="_blank">
-          ${escapeHtml(ctaText ?? "Ver oferta")}
-        </a>
+        <div class="ad-slot__links">${buttonsHtml}</div>
         <p class="ad-slot__disclosure">Link de afiliado — podemos ganhar uma comissão.</p>
       </div>
     </div>

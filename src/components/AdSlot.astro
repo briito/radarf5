@@ -6,8 +6,7 @@ interface AffiliateProduct {
   image: string;
   imageAlt?: string;
   price?: string;
-  url: string;
-  ctaText?: string;
+  links: { label: string; url: string }[];
 }
 
 interface Props {
