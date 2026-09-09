@@ -64,13 +64,13 @@ Uma lista curta tende a gerar mais sensação de progresso real do que uma lista
 
 Depois de dias sem cobrança de concentração, voltar a um ambiente de trabalho barulhento — seja o escritório, seja a sala de casa com filhos, TV ou vizinhos — costuma ser um dos maiores obstáculos pra retomar o ritmo.
 
-Aqui um fone de ouvido com bom cancelamento de ruído ativo (ANC) faz diferença real: ele não "aumenta" a produtividade sozinho, mas remove o atrito que atrapalha entrar em estado de foco.
+Nesse contexto, um bom fone de ouvido com bom cancelamento de ruído ativo (ANC) faz diferença real: ele não "aumenta" a produtividade sozinho, mas remove o atrito que atrapalha entrar em estado de foco.
 
 Um exemplo de custo-benefício que combina bem com esse cenário é o **soundcore P30i**. Ele reduz ruído em até 42dB com cancelamento ativo adaptativo — o suficiente pra segurar bem sons constantes como trânsito e ventilador.
 
-A autonomia é generosa (10 horas no fone, chegando a 45 horas contando o estojo), e uma curiosidade prática: o próprio estojo se transforma em suporte pra celular, útil pra quem assiste uma aula ou reunião gravada enquanto organiza a mesa.
+A autonomia é generosa (10 horas no fone, chegando a 45 horas) contando com um estojo que se transforma em suporte pra celular, útil pra quem assiste uma aula ou reunião gravada enquanto organiza a mesa.
 
-Tem também modo transparência, pra quem precisa ouvir rapidamente uma pessoa chamando ou uma campainha sem tirar o fone — bem útil justamente nessa fase de readaptação, em que interrupções externas ainda pegam de surpresa.
+Tem também o modo transparência, pra quem precisa ouvir rapidamente uma pessoa chamando ou uma campainha sem tirar o fone — bem útil justamente nessa fase de readaptação, em que interrupções externas ainda pegam de surpresa.
 
 <a href="https://link.amazon/B0gKgAuNM" class="inline-offer-image" rel="sponsored noopener" target="_blank">
   <img src="/images/soundcore-p30i.webp" alt="Fone de ouvido soundcore P30i com estojo que também serve de suporte para celular" loading="lazy" />
@@ -79,7 +79,7 @@ Tem também modo transparência, pra quem precisa ouvir rapidamente uma pessoa c
 
 ## Use blocos de tempo pra retomar o ritmo aos poucos
 
-Voltar direto pra um dia de oito horas de foco contínuo raramente funciona logo na primeira semana. Uma alternativa mais realista é o time blocking em doses menores: blocos de 25 a 45 minutos de trabalho focado, intercalados com pausas curtas de verdade — levantar, tomar água, olhar pra longe.
+Voltar direto pra um dia de oito horas de foco contínuo raramente funciona logo na primeira semana. Uma alternativa mais realista é o time em doses menores: blocos de 25 a 45 minutos de trabalho focado, intercalados com pausas curtas de verdade — levantar, tomar água, olhar pra longe.
 
 Esse ritmo mais fatiado respeita o fato de que a capacidade de concentração também precisa ser retreinada aos poucos, e evita o cansaço mental de tentar forçar um "modo produtividade total" que o cérebro ainda não está pronto pra sustentar.
 
@@ -91,7 +91,7 @@ São pequenos gatilhos que tornam a virada de chave menos abrupta depois de dias
 
 ## Cuidado com o efeito rebote
 
-É tentador tentar compensar o feriado trabalhando até mais tarde ou cortando pausas na primeira semana de volta. Na prática, isso costuma ter o efeito contrário: cansaço acumulado, mais erros e uma segunda "ressaca" no fim de semana seguinte.
+É tentador compensar o feriado trabalhando até mais tarde ou cortando pausas na primeira semana de volta. Na prática, isso costuma ter o efeito contrário: cansaço acumulado, mais erros e uma segunda "ressaca" no fim de semana seguinte.
 
 O ideal é aceitar que a primeira semana pós-feriado pode render um pouco menos, e que isso se normaliza sozinho em poucos dias — sem precisar de heroísmo.
 
@@ -103,7 +103,7 @@ Se organizar tudo de uma vez ainda parece difícil, esse pequeno roteiro ajuda a
 - Liste no máximo três prioridades por dia, não mais que isso
 - Separe um horário fixo pra e-mails e mensagens, em vez de checar o tempo todo
 - Use blocos curtos de foco (25 a 45 minutos) com pausas reais entre eles
-- Reduza o ruído do ambiente durante os blocos de foco, com fone ANC ou outro método
+- Reduza o ruído do ambiente durante os blocos de foco, com fone de ouvido ou outro método
 - Evite compensar o feriado trabalhando até mais tarde nos primeiros dias
 
 ## O resumo prático
