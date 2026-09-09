@@ -57,7 +57,7 @@ function buildAffiliateHtml({ position, affiliateProduct }) {
   return `
     <div class="ad-slot ad-slot--affiliate ad-slot--${position}">
       <div class="offer-card ad-slot__card">
-        <picture class="featured-image">
+        <picture class="ad-slot__product-image">
           <img src="${escapeHtml(image)}" alt="${escapeHtml(imageAlt ?? name)}" loading="lazy" />
         </picture>
         <h3 class="offer-title">${escapeHtml(name)}</h3>

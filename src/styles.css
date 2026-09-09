@@ -469,6 +469,20 @@ tr:hover {
     margin: 0 0 15px 0;
 }
 
+.ad-slot__product-image {
+    display: block;
+    margin: 0 0 15px 0;
+    text-align: center;
+}
+
+.ad-slot__product-image img {
+    max-width: 100%;
+    max-height: 220px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
 .offer-card h3 {
     margin-top: 10px;
     margin-bottom: 10px;

@@ -9,7 +9,7 @@ imageAlt: "Notebook coberto de post-its coloridos, representando a sobrecarga de
 draft: false
 hideMiddleAdSlot: true
 affiliateProduct:
-  name: "soundcore P30i - Fone Bluetooth com Cancelamento de Ruído"
+  name: "Fone de ouvido bluetooth sem fio com cancelamento de ruído"
   image: "/images/soundcore-p30i-produto.webp"
   imageAlt: "Fone de ouvido soundcore P30i na cor azul, com estojo de carregamento"
   price: "A partir de R$ 186,77"
