@@ -15,13 +15,32 @@ affiliateProduct:
   links:
     - label: "Prefiro Acessar na Amazon"
       url: "https://www.amazon.com.br/seu-link-de-afiliado"
+      price: "R$ 3.499"
+      marketplace: "amazon"
     - label: "Prefiro Acessar na Shopee"
       url: "https://s.shopee.com.br/seu-link-de-afiliado"
+      price: "R$ 3.599"
+      marketplace: "shopee"
     - label: "Prefiro Acessar no Mercado Livre"
       url: "https://meli.la/seu-link-de-afiliado"
+      price: "R$ 3.550"
+      marketplace: "mercadolivre"
 ```
 
-Todos os campos são opcionais, exceto `name`, `image` e `links` (que precisa ter pelo menos 1 item, mas aceita quantos marketplaces você quiser — Amazon, Shopee, Mercado Livre, etc). Cada item de `links` vira um botão no card, na ordem em que você escrever.
+Todos os campos são opcionais, exceto `name`, `image` e `links` (que precisa ter pelo menos 1 item, mas aceita quantos marketplaces você quiser). Cada item de `links` vira um botão no card, na ordem em que você escrever.
+
+- `price` (dentro de cada link) mostra o preço específico daquele marketplace acima do botão correspondente
+- `marketplace` (opcional: `amazon`, `shopee` ou `mercadolivre`) colore o botão com um tom suavizado da cor daquela loja. Sem esse campo, o botão usa a cor padrão do site
+
+### Capa do artigo como link de afiliado direto
+
+Se quiser que a própria imagem de capa do artigo seja clicável e leve direto pra uma oferta (em vez de mostrar só o card no meio/fim do artigo), adicione no frontmatter, fora do bloco `affiliateProduct`:
+
+```yaml
+imageLink: "https://www.amazon.com.br/seu-link-de-afiliado"
+```
+
+Isso transforma a imagem de capa num link, com o aviso "Link de afiliado" aparecendo automaticamente logo abaixo dela. Sem esse campo, a imagem continua sendo só ilustrativa, sem link.
 
 ## Para ativar o AdSense de verdade no futuro
 

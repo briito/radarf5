@@ -18,6 +18,7 @@ interface Props {
   category: string;
   image: string;
   imageAlt: string;
+  imageLink?: string;
   readingTime: number;
   affiliateProduct?: AffiliateProduct;
 }
@@ -30,6 +31,7 @@ const {
   category,
   image,
   imageAlt,
+  imageLink,
   readingTime,
   affiliateProduct,
 } = Astro.props;
@@ -86,14 +88,30 @@ const formattedDate = new Date(`${pubDate}T00:00:00`).toLocaleDateString(
   <div class="container">
     <article class="main-article">
       <picture class="featured-image">
-        <img
-          src={image}
-          alt={imageAlt}
-          width="1200"
-          height="675"
-          fetchpriority="high"
-        />
+        {
+          imageLink ? (
+            <a href={imageLink} rel="sponsored noopener" target="_blank">
+              <img
+                src={image}
+                alt={imageAlt}
+                width="1200"
+                height="675"
+                fetchpriority="high"
+              />
+            </a>
+          ) : (
+            <img
+              src={image}
+              alt={imageAlt}
+              width="1200"
+              height="675"
+              fetchpriority="high"
+            />
+          )
+        }
       </picture>
+
+      {imageLink && <p class="featured-image__disclosure">Link de afiliado — podemos ganhar uma comissão.</p>}
 
       <section class="article-body">
         <slot />

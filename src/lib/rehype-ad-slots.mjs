@@ -31,6 +31,9 @@ export default function rehypeAdSlots(options = {}) {
 
   return (tree, file) => {
     const frontmatter = file.data?.astro?.frontmatter ?? {};
+
+    if (frontmatter.hideMiddleAdSlot) return;
+
     const affiliateProduct = frontmatter.affiliateProduct;
 
     const html = buildAdSlotHtml({

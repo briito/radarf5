@@ -44,10 +44,10 @@ function buildAffiliateHtml({ position, affiliateProduct }) {
 
   const buttonsHtml = links
     .map(
-      ({ label, url, price }) => `
+      ({ label, url, price, marketplace }) => `
         <div class="ad-slot__link-group">
           ${price ? `<span class="ad-slot__link-price">${escapeHtml(price)}</span>` : ""}
-          <a href="${escapeHtml(url)}" class="btn-offer ad-slot__link" rel="sponsored noopener" target="_blank">
+          <a href="${escapeHtml(url)}" class="btn-offer ad-slot__link${marketplace ? ` btn-offer--${marketplace}` : ""}" rel="sponsored noopener" target="_blank">
             ${escapeHtml(label)}
           </a>
         </div>`,
