@@ -21,31 +21,18 @@ const articles = defineCollection({
     // (ex: direto para uma oferta de afiliado específica).
     imageLink: z.string().url().optional(),
     draft: z.boolean().optional().default(false),
-    // Se true, não insere o card de oferta automático no meio do artigo
-    // (útil quando o autor já colocou manualmente uma imagem/link no texto).
-    hideMiddleAdSlot: z.boolean().optional().default(false),
-    // Card de oferta/afiliado exibido no espaço reservado para anúncios
-    // (no meio do artigo) enquanto o AdSense ainda não está ativo.
-    // Quando ADS_ENABLED=true, esse espaço passa a mostrar o anúncio do
-    // AdSense no lugar deste card automaticamente — não precisa remover.
-    affiliateProduct: z
-      .object({
-        name: z.string(),
-        image: z.string(),
-        imageAlt: z.string().optional(),
-        price: z.string().optional(),
-        links: z
-          .array(
-            z.object({
-              label: z.string(),
-              url: z.string().url(),
-              price: z.string().optional(),
-              marketplace: z.enum(["amazon", "shopee", "mercadolivre"]).optional(),
-            }),
-          )
-          .min(1),
-      })
-      .optional(),
+    // CTA de afiliado (Hotmart/Kiwify) exibido no final do artigo.
+    // Só aparece se `ctaUrl` for definido; sem ele, nada é renderizado.
+    // `ctaText` e `ctaButtonLabel` já vêm com um texto padrão pensado pra
+    // ser repetido em todos os artigos — normalmente só `ctaUrl` muda.
+    ctaUrl: z.string().url().optional(),
+    ctaText: z
+      .string()
+      .optional()
+      .default(
+        "Quer aprender a construir um negócio digital e ter uma renda recorrente?",
+      ),
+    ctaButtonLabel: z.string().optional().default("Quero Acessar"),
   }),
 });
 

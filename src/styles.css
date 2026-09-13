@@ -224,11 +224,6 @@ img {
     width: 100%;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: transform var(--transition-fast);
-}
-
-.inline-offer-image:hover img {
-    transform: scale(1.02);
 }
 
 .inline-offer-image__disclosure {
@@ -469,20 +464,6 @@ tr:hover {
     margin: 0 0 15px 0;
 }
 
-.ad-slot__product-image {
-    display: block;
-    margin: 0 0 15px 0;
-    text-align: center;
-}
-
-.ad-slot__product-image img {
-    max-width: 100%;
-    max-height: 220px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-}
-
 .offer-card h3 {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -493,13 +474,17 @@ tr:hover {
     text-decoration: none;
 }
 
-/* Espaços reservados para anúncios (AdSense) / ofertas de afiliado.
-   Enquanto não houver AdSense nem oferta configurada, .ad-slot não é
-   renderizado — por isso não existe uma classe de "vazio" aqui. */
+/* Espaço reservado para anúncio (AdSense) no topo do artigo.
+   Enquanto o AdSense não estiver ativo, .ad-slot não é renderizado —
+   por isso não existe uma classe de "vazio" aqui. */
 .ad-slot {
     margin: 40px 0;
     display: flex;
     justify-content: center;
+}
+
+.ad-slot--top {
+    margin: 20px 0 30px;
 }
 
 .ad-slot--adsense {
@@ -507,72 +492,46 @@ tr:hover {
     min-height: 250px; /* reserva o espaço do anúncio e evita layout shift */
 }
 
-.ad-slot__card {
-    width: 100%;
-    max-width: 420px;
-    text-align: center;
+/* CTA de afiliado (Hotmart/Kiwify), repetido no final de cada artigo */
+.cta-box {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 24px;
+    margin: 35px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     align-items: center;
+    text-align: center;
 }
 
-.ad-slot__price {
+.cta-box__text {
     font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--accent-color);
+    font-weight: 600;
+    max-width: 480px;
     margin: 0;
 }
 
-.ad-slot__links {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 10px;
+.btn-cta {
+    display: inline-block;
+    background-color: #15151d;
+    color: #ffffff !important;
+    font-weight: 700;
+    padding: 14px 28px;
+    border: 2px solid #c9ff33;
+    border-radius: 999px;
+    text-decoration: none !important;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
 }
 
-.ad-slot__link-group {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+.btn-cta:hover {
+    background-color: #21212c;
+    border-color: #ddff70;
 }
 
-.ad-slot__link-price {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-}
-
-.ad-slot__link {
-    width: 100%;
-    text-align: center;
-}
-
-/* Cores suavizadas por marketplace — reconhecíveis, mas sem o tom saturado da marca */
-.btn-offer.btn-offer--amazon {
-    background-color: #b08968;
-}
-
-.btn-offer.btn-offer--amazon:hover {
-    background-color: #9c7454;
-}
-
-.btn-offer.btn-offer--shopee {
-    background-color: #f0654a;
-}
-
-.btn-offer.btn-offer--shopee:hover {
-    background-color: #dd5138;
-}
-
-.btn-offer.btn-offer--mercadolivre {
-    background-color: #e8c547;
-    color: #2d3277 !important;
-}
-
-.btn-offer.btn-offer--mercadolivre:hover {
-    background-color: #dab72e;
-}
-
-.ad-slot__disclosure {
+.cta-box__disclosure {
     font-size: 0.75rem;
     color: var(--text-muted);
-    margin: 4px 0 0;
+    margin: 0;
 }

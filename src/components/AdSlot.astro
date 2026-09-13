@@ -1,20 +1,11 @@
 ---
 import { buildAdSlotHtml } from "../lib/ad-slot-html.js";
 
-interface AffiliateProduct {
-  name: string;
-  image: string;
-  imageAlt?: string;
-  price?: string;
-  links: { label: string; url: string }[];
-}
-
 interface Props {
-  position: "end";
-  affiliateProduct?: AffiliateProduct;
+  position: "top";
 }
 
-const { position, affiliateProduct } = Astro.props;
+const { position } = Astro.props;
 
 const adsEnabled = import.meta.env.ADS_ENABLED === "true";
 
@@ -22,8 +13,7 @@ const html = buildAdSlotHtml({
   enabled: adsEnabled,
   position,
   adsenseClientId: import.meta.env.ADSENSE_CLIENT_ID,
-  adsenseSlotId: import.meta.env.ADSENSE_SLOT_END,
-  affiliateProduct,
+  adsenseSlotId: import.meta.env.ADSENSE_SLOT_TOP,
 });
 ---
 

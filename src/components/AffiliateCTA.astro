@@ -1,0 +1,33 @@
+---
+// CTA simples de afiliado (Hotmart/Kiwify), pensado pra ser repetido em
+// todos os artigos. Só renderiza se `url` estiver definido — sem link,
+// não aparece nenhuma caixa vazia.
+interface Props {
+  url?: string;
+  text: string;
+  buttonLabel: string;
+}
+
+const { url, text, buttonLabel } = Astro.props;
+---
+
+{
+  url && (
+    <div class="cta-box">
+      <p class="cta-box__text">{text}</p>
+
+      <a
+        href={url}
+        class="btn-cta"
+        rel="sponsored noopener"
+        target="_blank"
+      >
+        Acesse: {buttonLabel}
+      </a>
+
+      <p class="cta-box__disclosure">
+        Link de afiliado — podemos ganhar uma comissão.
+      </p>
+    </div>
+  )
+}

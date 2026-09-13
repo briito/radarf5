@@ -1,14 +1,12 @@
-// Gera o HTML de um "espaço de anúncio" do site.
+// Gera o HTML de um "espaço de anúncio" do site (AdSense).
 //
-// Regra: enquanto o AdSense não estiver ativo (ADS_ENABLED !== "true"),
-// esse espaço NUNCA fica vazio nem aparece uma caixa em branco — ou mostra
-// o card de oferta/afiliado (se o artigo tiver um definido em
-// `affiliateProduct` no frontmatter), ou simplesmente não renderiza nada.
+// Regra: enquanto o AdSense não estiver ativo (ADS_ENABLED !== "true") ou
+// as credenciais do slot não estiverem preenchidas, esse espaço não
+// renderiza nada — nunca aparece uma caixa vazia.
 //
-// Quando o AdSense for ativado (variáveis de ambiente ADS_ENABLED=true,
-// ADSENSE_CLIENT_ID e o slot id correspondente preenchidos), o mesmo espaço
-// passa a exibir o anúncio real automaticamente, sem precisar mexer em
-// nenhum artigo.
+// Quando o AdSense for ativado (ADS_ENABLED=true, ADSENSE_CLIENT_ID e o
+// slot id correspondente preenchidos), o espaço passa a exibir o anúncio
+// real automaticamente, sem precisar mexer em nenhum artigo.
 
 function escapeHtml(value) {
   return String(value)
@@ -19,10 +17,8 @@ function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
-function buildAdsenseHtml({ position, adsenseClientId, adsenseSlotId }) {
-  if (!adsenseClientId || !adsenseSlotId) {
-    // AdSense está "ligado" mas ainda faltam as credenciais reais —
-    // não renderiza nada em vez de quebrar a página com um slot inválido.
+export function buildAdSlotHtml({ enabled, position, adsenseClientId, adsenseSlotId }) {
+  if (!enabled || !adsenseClientId || !adsenseSlotId) {
     return "";
   }
 
@@ -37,53 +33,4 @@ function buildAdsenseHtml({ position, adsenseClientId, adsenseSlotId }) {
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
   `.trim();
-}
-
-function buildAffiliateHtml({ position, affiliateProduct }) {
-  const { name, image, imageAlt, price, links } = affiliateProduct;
-
-  const buttonsHtml = links
-    .map(
-      ({ label, url, price, marketplace }) => `
-        <div class="ad-slot__link-group">
-          ${price ? `<span class="ad-slot__link-price">${escapeHtml(price)}</span>` : ""}
-          <a href="${escapeHtml(url)}" class="btn-offer ad-slot__link${marketplace ? ` btn-offer--${marketplace}` : ""}" rel="sponsored noopener" target="_blank">
-            ${escapeHtml(label)}
-          </a>
-        </div>`,
-    )
-    .join("");
-
-  return `
-    <div class="ad-slot ad-slot--affiliate ad-slot--${position}">
-      <div class="offer-card ad-slot__card">
-        <picture class="ad-slot__product-image">
-          <img src="${escapeHtml(image)}" alt="${escapeHtml(imageAlt ?? name)}" loading="lazy" />
-        </picture>
-        <h3 class="offer-title">${escapeHtml(name)}</h3>
-        ${price ? `<p class="ad-slot__price">${escapeHtml(price)}</p>` : ""}
-        <div class="ad-slot__links">${buttonsHtml}</div>
-        <p class="ad-slot__disclosure">Link de afiliado — podemos ganhar uma comissão.</p>
-      </div>
-    </div>
-  `.trim();
-}
-
-export function buildAdSlotHtml({
-  enabled,
-  position,
-  adsenseClientId,
-  adsenseSlotId,
-  affiliateProduct,
-}) {
-  if (enabled) {
-    const adsenseHtml = buildAdsenseHtml({ position, adsenseClientId, adsenseSlotId });
-    if (adsenseHtml) return adsenseHtml;
-  }
-
-  if (affiliateProduct) {
-    return buildAffiliateHtml({ position, affiliateProduct });
-  }
-
-  return "";
 }

@@ -6,26 +6,7 @@ pubDate: "2026-09-08"
 category: "Produtividade"
 image: "/images/produtividade-pos-feriado-1200x675.webp"
 imageAlt: "Notebook coberto de post-its coloridos, representando a sobrecarga de tarefas depois do feriado"
-draft: false
-hideMiddleAdSlot: true
-affiliateProduct:
-  name: "Fone de ouvido bluetooth sem fio com cancelamento de ruído"
-  image: "/images/soundcore-p30i-produto.webp"
-  imageAlt: "Fone de ouvido soundcore P30i na cor azul, com estojo de carregamento"
-  price: "A partir de R$ 186,77"
-  links:
-    - label: "Prefiro Acessar na Amazon"
-      url: "https://link.amazon/B0gKgAuNM"
-      price: "R$ 186,77"
-      marketplace: "amazon"
-    - label: "Prefiro Acessar na Shopee"
-      url: "https://s.shopee.com.br/1LfalbyMm7"
-      price: "R$ 199,90"
-      marketplace: "shopee"
-    - label: "Prefiro Acessar no Mercado Livre"
-      url: "https://meli.la/1gR3Ctz"
-      price: "R$ 196,60"
-      marketplace: "mercadolivre"
+draft: true
 ---
 
 Depois de um feriado prolongado como o de 7 de Setembro, é normal sentir que o corpo voltou ao trabalho, mas a cabeça ainda está na praia, na viagem ou simplesmente no modo "descanso". Esse desalinho é mais comum do que parece.
@@ -72,10 +53,10 @@ A autonomia é generosa (10 horas no fone, chegando a 45 horas) contando com um 
 
 Tem também o modo transparência, pra quem precisa ouvir rapidamente uma pessoa chamando ou uma campainha sem tirar o fone — bem útil justamente nessa fase de readaptação, em que interrupções externas ainda pegam de surpresa.
 
-<a href="https://link.amazon/B0gKgAuNM" class="inline-offer-image" rel="sponsored noopener" target="_blank">
+<div class="inline-offer-image">
   <img src="/images/soundcore-p30i.webp" alt="Fone de ouvido soundcore P30i com estojo que também serve de suporte para celular" loading="lazy" />
-</a>
-<p class="inline-offer-image__disclosure">Link de afiliado — podemos ganhar uma comissão.</p>
+</div>
+<p class="inline-offer-image__disclosure">Imagem ilustrativa do produto.</p>
 
 ## Use blocos de tempo pra retomar o ritmo aos poucos
 
