@@ -32,7 +32,7 @@ const articles = defineCollection({
       .default(
         "Quer aprender a construir um negócio digital e ter uma renda recorrente?",
       ),
-    ctaButtonLabel: z.string().optional().default("Quero Acessar"),
+    ctaButtonLabel: z.string().optional().default("Quero Aprender"),
   }),
 });
 
