@@ -9,12 +9,18 @@ interface Props {
 }
 
 const { url, text, buttonLabel } = Astro.props;
+
+// `text` pode vir com duas frases separadas por uma linha em branco
+// (\n\n); cada uma vira um parágrafo próprio, com espaço entre elas.
+const paragraphs = text.split("\n\n").filter(Boolean);
 ---
 
 {
   url && (
     <div class="cta-box">
-      <p class="cta-box__text">{text}</p>
+      {paragraphs.map((paragraph) => (
+        <p class="cta-box__text">{paragraph}</p>
+      ))}
 
       <a
         href={url}

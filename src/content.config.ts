@@ -30,9 +30,9 @@ const articles = defineCollection({
       .string()
       .optional()
       .default(
-        "Quer aprender a construir um negócio digital e ter uma renda recorrente?",
+        "Quer aprender a construir um negócio digital e ter uma renda recorrente?\n\nClique em Saiba Mais e descubra se faz sentido pra você.",
       ),
-    ctaButtonLabel: z.string().optional().default("Quero Aprender"),
+    ctaButtonLabel: z.string().optional().default("Saiba Mais"),
   }),
 });
 
