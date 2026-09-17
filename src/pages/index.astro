@@ -32,16 +32,23 @@ const articles = await getCollection("articles", ({ data }) => {
     <h2>Artigos em Destaque</h2>
 
     {
-      articles.map((article) => (
-        <ArticleCard
-          title={article.data.title}
-          description={article.data.description}
-          category={article.data.category}
-          image={article.data.image}
-          imageAlt={article.data.imageAlt}
-          href={`/artigos/${article.data.slug}/`}
-        />
-      ))
+      articles.length === 0 ? (
+        <p class="empty-state">
+          Estamos preparando os primeiros conteúdos sobre IA aplicada a
+          negócios digitais. Volte em breve!
+        </p>
+      ) : (
+        articles.map((article) => (
+          <ArticleCard
+            title={article.data.title}
+            description={article.data.description}
+            category={article.data.category}
+            image={article.data.image}
+            imageAlt={article.data.imageAlt}
+            href={`/artigos/${article.data.slug}/`}
+          />
+        ))
+      )
     }
   </section>
 </BaseLayout>
