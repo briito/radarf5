@@ -7,7 +7,7 @@ category: "Prompts & Prática"
 image: "/images/prompts-ebook-ia-1200x675.webp"
 imageAlt: "Pessoa digitando em um notebook com um ebook e ícones de inteligência artificial representados na tela"
 draft: false
-ctaUrl: "https://pay.kiwify.com.br/3J0jzxS?afid=4GQgkmEn"
+ctaUrl: "https://negociosdigitais.radarf5.com/"
 ---
 
 Criar um ebook do zero costumava exigir dias de trabalho: definir o tema, estruturar os capítulos, escrever o conteúdo, revisar e ainda pensar em como vender. Com o ChatGPT, esse processo pode ser reduzido a algumas horas — desde que você saiba pedir as coisas certas.

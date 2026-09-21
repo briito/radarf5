@@ -7,7 +7,7 @@ category: "Ferramentas & Reviews"
 image: "/images/ferramentas-ia-criar-cursos-1200x675.webp"
 imageAlt: "Notebook com ícones de vídeo, slides e quiz representando ferramentas de IA para criar cursos online"
 draft: false
-ctaUrl: "https://pay.kiwify.com.br/3J0jzxS?afid=4GQgkmEn"
+ctaUrl: "https://negociosdigitais.radarf5.com/"
 ---
 
 Criar um curso online do zero costuma travar em um ponto específico: você tem o conhecimento, mas não tem tempo (ou paciência) para roteirizar aulas, montar slides, gravar vídeo e ainda criar avaliações. A boa notícia é que hoje existe uma ferramenta de IA para cada uma dessas etapas — e várias delas têm plano gratuito para você testar antes de pagar qualquer coisa.
