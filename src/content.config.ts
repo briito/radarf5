@@ -17,22 +17,17 @@ const articles = defineCollection({
     category: z.string(),
     image: z.string(),
     imageAlt: z.string().default("Imagem ilustrativa"),
-    // Se definido, a imagem de capa do artigo vira um link clicável
-    // (ex: direto para uma oferta de afiliado específica).
     imageLink: z.string().url().optional(),
     draft: z.boolean().optional().default(false),
-    // CTA de afiliado (Hotmart/Kiwify) exibido no final do artigo.
-    // Só aparece se `ctaUrl` for definido; sem ele, nada é renderizado.
-    // `ctaText` e `ctaButtonLabel` já vêm com um texto padrão pensado pra
-    // ser repetido em todos os artigos — normalmente só `ctaUrl` muda.
+
     ctaUrl: z.string().url().optional(),
     ctaText: z
       .string()
       .optional()
       .default(
-        "Quer aprender a construir um negócio digital e ter uma renda recorrente?\n\nClique em Saiba Mais e descubra se faz sentido pra você.",
+        "Você trabalha o dia inteiro, mas sente que o dinheiro nunca é suficiente?\n\nJá tentou empreender online e sentiu que estava se esforçando muito sem ver resultado?\n\nO problema não é você — é a estratégia.\n\nExiste um método simples para transformar seu conhecimento em uma fonte de renda recorrente.\n\nSem depender só do seu tempo.",
       ),
-    ctaButtonLabel: z.string().optional().default("Saiba Mais"),
+    ctaButtonLabel: z.string().optional().default("Quero Ver o Método"),
   }),
 });
 
