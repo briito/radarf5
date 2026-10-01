@@ -4,8 +4,9 @@ slug: "roteiro-reels-ia"
 description: "Prompts prontos de ChatGPT para criar roteiros e legendas de Reels e Shorts em minutos, mesmo sem experiência com criação de conteúdo."
 pubDate: "2026-09-30"
 category: "Prompts & Prática"
-image: "/images/roteiro-reels-ia.webp"
-imageAlt: "Pessoa editando um vídeo no smartphone com ChatGPT ao fundo"
+image: "/images/roteiro-reels-ia-1200x675.webp"
+imageAlt: "Pessoa segurando um celular gravando um vídeo curto, com um notebook mostrando o ChatGPT ao fundo"
+draft: false
 ctaUrl: "https://negociosdigitais.radarf5.com/"
 ---
 
