@@ -1,0 +1,42 @@
+---
+// Próximo passo no fim do artigo: isca digital, produto próprio ou (quando
+// fizer sentido) link de afiliado. Só renderiza se houver url E texto — sem
+// isso, nenhuma caixa vazia (ou genérica) aparece.
+interface Props {
+  url?: string;
+  text?: string;
+  buttonLabel: string;
+  type: "isca" | "produto" | "afiliado";
+}
+
+const { url, text, buttonLabel, type } = Astro.props;
+
+// `text` pode ter vários parágrafos separados por uma linha em branco (\n\n).
+const paragraphs = (text ?? "").split("\n\n").filter(Boolean);
+const isAffiliate = type === "afiliado";
+---
+
+{
+  url && paragraphs.length > 0 && (
+    <div class="cta-box">
+      {paragraphs.map((paragraph) => (
+        <p class="cta-box__text">{paragraph}</p>
+      ))}
+
+      <a
+        href={url}
+        class="btn-cta"
+        rel={isAffiliate ? "sponsored noopener" : "noopener"}
+        target="_blank"
+      >
+        {buttonLabel}
+      </a>
+
+      {isAffiliate && (
+        <p class="cta-box__disclosure">
+          Link de afiliado — podemos ganhar uma comissão.
+        </p>
+      )}
+    </div>
+  )
+}

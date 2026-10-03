@@ -1,10 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { CATEGORIES } from "../lib/categories";
 ---
 
 <BaseLayout
   title="Sobre Nós - Radar F5"
-  description="Conheça o Radar F5, um blog sobre inteligência artificial aplicada a negócios digitais, com ferramentas, prompts e automações explicados na prática."
+  description="Conheça o Radar F5, um blog sobre inteligência artificial e redes sociais para pequenos negócios, com guias práticos, prompts e testes de ferramentas explicados de forma simples."
 >
   <div class="container" style="margin-top: 30px;">
     <article>
@@ -13,139 +14,121 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <div class="callout-box">
         <p>
           <strong>Nossa missão: </strong>
-          Desmistificar ferramentas de inteligência artificial e
-          transformá-las em soluções práticas para quem quer economizar
-          tempo, aumentar produtividade e criar oportunidades de negócio
-          no ambiente digital.
+          Ajudar pequenos negócios a usar inteligência artificial, redes
+          sociais e ferramentas digitais de forma simples, prática e
+          orientada a problemas reais, sem exigir conhecimento técnico.
         </p>
       </div>
 
       <h2>Quem Somos</h2>
 
       <p>
-        O <strong>Radar F5</strong> nasceu com uma proposta simples:
-        acompanhar de perto o universo da inteligência artificial aplicada
-        a negócios digitais, e traduzir isso em conteúdo acessível para
-        empreendedores digitais, criadores de conteúdo e freelancers que
-        querem usar a IA para economizar tempo, aumentar produtividade e
-        faturar mais.
+        O <strong>Radar F5</strong> é um blog sobre
+        <strong>IA e redes sociais para pequenos negócios</strong>. Escrevemos
+        para donos de pequenos negócios, profissionais que trabalham neles e
+        empreendedores iniciantes ou intermediários em IA, que precisam
+        aparecer nas redes sociais, atender bem os clientes e ganhar tempo, mas
+        não têm tempo (nem vontade) de lidar com tecnologia complicada.
       </p>
 
       <p>
-        O nome vem direto do teclado: assim como o F5 atualiza uma página,
-        o Radar F5 existe para manter você atualizado sobre as ferramentas
-        e possibilidades que a inteligência artificial está abrindo no
-        mundo dos negócios digitais.
+        O nome vem direto do teclado: assim como o F5 atualiza uma página, o
+        Radar F5 existe para manter você atualizado sobre o que realmente
+        funciona na prática.
       </p>
 
       <h2>O Que Fazemos</h2>
 
       <p>
-        Produzimos conteúdos sobre <strong>inteligência artificial aplicada
-        a negócios digitais</strong>: prompts prontos e passo a passo de
-        ferramentas de IA (Prompts & Prática), análises e comparativos de
-        softwares e plataformas (Ferramentas & Reviews), e automações que
-        eliminam tarefas repetitivas e ganham produtividade (Automação).
+        Transformamos dúvidas reais de pequenos negócios em conteúdo prático:
+        guias, tutoriais, comparativos, testes de ferramentas e listas de
+        prompts. Organizamos tudo por problema que você quer resolver:
       </p>
 
+      <ul>
+        {
+          CATEGORIES.map((category) => (
+            <li>
+              <a href={`/categorias/${category.slug}/`}>{category.name}</a>:{" "}
+              {category.description}
+            </li>
+          ))
+        }
+      </ul>
+
+      <h2>Como Trabalhamos</h2>
+
       <p>
-        Nosso objetivo é ir além da notícia rápida e ajudar o leitor a
-        entender o contexto por trás das novidades — por que algo importa,
-        como isso pode ser aplicado na prática e o que vale a pena observar
-        daqui pra frente.
+        Priorizamos o problema do leitor, a utilidade prática e a clareza.
+        Sempre que possível, testamos e documentamos o que recomendamos:
+        informamos o que foi testado, como, quanto custou, qual foi o
+        resultado e quais foram as limitações. Um teste isolado não é
+        apresentado como verdade universal, e evitamos dizer que uma
+        ferramenta é "a melhor" sem evidências.
       </p>
 
       <h2>Nosso Compromisso Editorial</h2>
 
       <p>
-        O Radar F5 busca produzir conteúdo informativo de forma clara,
-        transparente e com <strong>independência editorial</strong>.
+        O Radar F5 busca produzir conteúdo claro, transparente e com
+        <strong>independência editorial</strong>.
       </p>
 
       <p>
-        A participação em programas de afiliados ou a existência de relações
-        comerciais não determina, por si só, o conteúdo de um artigo ou a
-        recomendação de uma determinada plataforma ou produto.
+        Fazemos distinção entre fatos, análises, experiências e opiniões. Quando
+        um conteúdo depende de informações que mudam rápido, como preços e
+        funcionalidades de ferramentas, indicamos a data de publicação e de
+        atualização e revisamos o artigo quando necessário. Se você encontrar
+        algo desatualizado ou incorreto, avise pela nossa página de contato.
+      </p>
+
+      <h2>Materiais Gratuitos, Produtos e Links de Afiliados</h2>
+
+      <p>
+        Alguns artigos poderão oferecer materiais complementares gratuitos, como
+        checklists, modelos e prompts. O Radar F5 também poderá oferecer
+        produtos digitais próprios, sempre identificados como tal e apresentados
+        depois de entregarmos valor no conteúdo, nunca no lugar dele.
       </p>
 
       <p>
-        Quando identificamos informações que precisam ser atualizadas ou
-        corrigidas, buscamos realizar os ajustes necessários para manter
-        nossos conteúdos tão precisos e úteis quanto possível.
-      </p>
-
-      <h2>Links de Afiliados e Relações Comerciais</h2>
-
-      <p>
-        O Radar F5 participa de programas de afiliados de plataformas de
-        produtos digitais, como <strong>Hotmart</strong> e
-        <strong> Kiwify</strong>. Isso significa que alguns links
-        apresentados em nossos conteúdos podem ser
-        <strong> links de afiliados</strong>.
-      </p>
-
-      <p>
-        Caso você realize uma compra ou outra ação qualificada por meio de um
-        desses links, o Radar F5 poderá receber uma comissão. Essa comissão
-        ajuda a manter o site e a produção de novos conteúdos e, quando
-        aplicável, não representa um custo adicional para você.
+        Em alguns casos, podemos indicar ferramentas ou produtos de terceiros
+        por meio de <strong>links de afiliados</strong> (por exemplo, de
+        plataformas como <strong>Hotmart</strong> e <strong>Kiwify</strong>).
+        Quando isso acontecer, o link será sinalizado e, se você realizar uma
+        compra ou outra ação qualificada, o Radar F5 poderá receber uma
+        comissão, sem custo adicional para você, quando aplicável.
       </p>
 
       <p>
         A existência de um link de afiliado não significa que o produto
-        indicado seja a melhor opção para todos os leitores. Sempre que
-        possível, procuramos indicar apenas produtos e plataformas
-        relacionados ao contexto do artigo.
-      </p>
-
-      <h2>O Radar F5 Não é uma Plataforma de Venda</h2>
-
-      <p>
-        O Radar F5 não é uma loja e não realiza diretamente a venda dos
-        produtos mencionados em nossos conteúdos.
-      </p>
-
-      <p>
-        Quando disponibilizamos links de acesso, eles podem direcionar o
-        leitor para plataformas como <strong>Hotmart</strong> e
-        <strong> Kiwify</strong>, responsáveis pela venda, entrega e suporte
-        dos respectivos produtos digitais.
-      </p>
-
-      <p>
-        Preços, condições de pagamento, garantia e demais condições
-        comerciais são definidos pelas respectivas plataformas ou
-        produtores, e podem mudar a qualquer momento.
-      </p>
-
-      <p>
-        Recomendamos que o leitor confira as informações e as condições
-        apresentadas pela plataforma antes de concluir qualquer compra.
+        indicado seja a melhor opção para todos os leitores. Preços, condições
+        de pagamento e garantia são definidos pelas plataformas e pelos
+        produtores e podem mudar a qualquer momento, por isso recomendamos
+        conferir as informações antes de concluir qualquer compra.
       </p>
 
       <h2>Atualização das Informações</h2>
 
       <p>
-        Tendências, ferramentas, preços e condições comerciais podem mudar
-        após a publicação de um conteúdo. Por esse motivo, algumas
-        informações apresentadas em nossos artigos podem ficar desatualizadas
-        com o tempo. Quando possível, buscamos revisar e atualizar nossos
-        conteúdos para acompanhar essas mudanças.
+        Ferramentas de IA mudam planos, preços e recursos com frequência. Por
+        esse motivo, algumas informações apresentadas em nossos artigos podem
+        ficar desatualizadas com o tempo. Sempre que possível, revisamos e
+        atualizamos os conteúdos e mostramos a data da última atualização.
       </p>
 
       <h2>Nosso Objetivo</h2>
 
       <p>
-        Queremos que o Radar F5 seja uma referência em inteligência
-        artificial aplicada a negócios digitais, com conteúdo que ajude o
-        leitor a aplicar a tecnologia na prática e, quando fizer sentido, a
-        dar os próximos passos em direção a uma renda digital.
+        Queremos construir uma biblioteca de conhecimento útil e pesquisável
+        sobre IA e redes sociais para pequenos negócios, que ajude você a
+        resolver problemas do dia a dia e a dar o próximo passo com confiança.
       </p>
 
       <h2>Contato</h2>
 
       <p>
-        Tem alguma dúvida, sugestão ou encontrou alguma informação que
+        Tem alguma dúvida, sugestão de tema ou encontrou alguma informação que
         precisa ser corrigida? Entre em contato com nossa equipe.
       </p>
 

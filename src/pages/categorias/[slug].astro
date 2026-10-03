@@ -1,0 +1,63 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import CategoryNav from "../../components/CategoryNav.astro";
+import { CATEGORIES } from "../../lib/categories";
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return CATEGORIES.map((category) => ({
+    params: { slug: category.slug },
+    props: { category },
+  }));
+}
+
+const { category } = Astro.props;
+
+const articles = (
+  await getCollection("articles", ({ data }) => {
+    return data.draft !== true && data.category === category.name;
+  })
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout
+  title={`${category.name} - Radar F5`}
+  description={category.description}
+>
+  <section class="container hero-section">
+    <div class="callout-box">
+      <h1>{category.name}</h1>
+      <p>{category.description}</p>
+    </div>
+  </section>
+
+  <section class="container articles-grid">
+    <CategoryNav current={category.slug} />
+
+    <h2>Artigos em {category.name}</h2>
+
+    {
+      articles.length === 0 ? (
+        <p class="empty-state">
+          Ainda não temos artigos nesta categoria. Em breve publicaremos
+          novos conteúdos. Enquanto isso, veja{" "}
+          <a href="/artigos/">todos os artigos</a>.
+        </p>
+      ) : (
+        articles.map((article) => (
+          <ArticleCard
+            title={article.data.title}
+            description={article.data.description}
+            category={article.data.category}
+            image={article.data.image}
+            imageAlt={article.data.imageAlt}
+            href={`/artigos/${article.data.slug}/`}
+          />
+        ))
+      )
+    }
+  </section>
+</BaseLayout>

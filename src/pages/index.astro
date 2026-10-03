@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ArticleCard from "../components/ArticleCard.astro";
+import CategoryNav from "../components/CategoryNav.astro";
 
 const articles = (await getCollection("articles", ({ data }) => {
   return data.draft !== true;
@@ -9,33 +10,36 @@ const articles = (await getCollection("articles", ({ data }) => {
 ---
 
 <BaseLayout
-  title="Radar F5 — Inteligência Artificial Aplicada a Negócios Digitais"
-  description="Ferramentas de IA, prompts e automações explicados de forma prática para quem quer aplicar no próprio negócio digital."
+  title="Radar F5 — IA e Redes Sociais para Pequenos Negócios"
+  description="Guias práticos, prompts e ferramentas de IA para pequenos negócios criarem conteúdo, usarem o Instagram e atenderem melhor, sem complicação."
 >
   <section class="container hero-section">
     <div class="callout-box">
-      <h1>Inteligência Artificial Aplicada a Negócios Digitais</h1>
+      <h1>IA e Redes Sociais para Pequenos Negócios</h1>
 
       <p>
         Bem-vindo(a) ao <strong>Radar F5</strong>.
       </p>
 
       <p>
-        Menos teoria, mais aplicação: ferramentas de IA, prompts e
-        automações explicados na prática para quem quer economizar tempo,
-        ganhar produtividade e criar oportunidades no digital.
+        Guias práticos, prompts e testes de ferramentas para você usar
+        inteligência artificial e redes sociais no seu negócio, mesmo sem
+        conhecimento técnico: criar conteúdo mais rápido, organizar o
+        Instagram, atender melhor e ganhar tempo.
       </p>
     </div>
   </section>
 
   <section class="container articles-grid">
+    <CategoryNav />
+
     <h2>Artigos em Destaque</h2>
 
     {
       articles.length === 0 ? (
         <p class="empty-state">
-          Estamos preparando os primeiros conteúdos sobre IA aplicada a
-          negócios digitais. Volte em breve!
+          Estamos preparando os primeiros conteúdos sobre IA e redes
+          sociais para pequenos negócios. Volte em breve!
         </p>
       ) : (
         articles.map((article) => (

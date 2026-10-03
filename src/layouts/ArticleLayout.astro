@@ -1,21 +1,26 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import AdSlot from "../components/AdSlot.astro";
-import AffiliateCTA from "../components/AffiliateCTA.astro";
+import ArticleCTA from "../components/ArticleCTA.astro";
+import RelatedArticles from "../components/RelatedArticles.astro";
+import { categoryHref } from "../lib/categories";
 
 interface Props {
   title: string;
   description: string;
   author: string;
   pubDate: string;
+  updatedDate?: string;
   category: string;
   image: string;
   imageAlt: string;
   imageLink?: string;
   readingTime: number;
   ctaUrl?: string;
-  ctaText: string;
+  ctaText?: string;
   ctaButtonLabel: string;
+  ctaType: "isca" | "produto" | "afiliado";
+  related: { title: string; href: string; category: string }[];
 }
 
 const {
@@ -23,6 +28,7 @@ const {
   description,
   author,
   pubDate,
+  updatedDate,
   category,
   image,
   imageAlt,
@@ -31,6 +37,8 @@ const {
   ctaUrl,
   ctaText,
   ctaButtonLabel,
+  ctaType,
+  related,
 } = Astro.props;
 
 const formattedDate = new Date(`${pubDate}T00:00:00`).toLocaleDateString(
@@ -41,6 +49,14 @@ const formattedDate = new Date(`${pubDate}T00:00:00`).toLocaleDateString(
     year: "numeric",
   },
 );
+
+const formattedUpdated = updatedDate
+  ? new Date(`${updatedDate}T00:00:00`).toLocaleDateString("pt-BR", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    })
+  : undefined;
 ---
 
 <BaseLayout
@@ -60,7 +76,7 @@ const formattedDate = new Date(`${pubDate}T00:00:00`).toLocaleDateString(
 
         <span aria-hidden="true"> &gt; </span>
 
-        <span>{category}</span>
+        <a href={categoryHref(category)}>{category}</a>
       </nav>
 
       <AdSlot position="top" />
@@ -76,6 +92,17 @@ const formattedDate = new Date(`${pubDate}T00:00:00`).toLocaleDateString(
         <span>|</span>
 
         <time datetime={pubDate}>{formattedDate}</time>
+
+        {
+          formattedUpdated && (
+            <>
+              <span>|</span>
+              <span class="updated-date">
+                Atualizado em <time datetime={updatedDate}>{formattedUpdated}</time>
+              </span>
+            </>
+          )
+        }
 
         <span>|</span>
 
@@ -116,7 +143,14 @@ const formattedDate = new Date(`${pubDate}T00:00:00`).toLocaleDateString(
         <slot />
       </section>
 
-      <AffiliateCTA url={ctaUrl} text={ctaText} buttonLabel={ctaButtonLabel} />
+      <ArticleCTA
+        url={ctaUrl}
+        text={ctaText}
+        buttonLabel={ctaButtonLabel}
+        type={ctaType}
+      />
+
+      <RelatedArticles items={related} />
     </article>
   </div>
 </BaseLayout>

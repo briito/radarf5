@@ -1,0 +1,29 @@
+---
+interface Item {
+  title: string;
+  href: string;
+  category: string;
+}
+
+interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props;
+---
+
+{
+  items.length > 0 && (
+    <aside class="related-articles" aria-label="Continue lendo">
+      <h2>Continue lendo</h2>
+      <ul>
+        {items.map((item) => (
+          <li>
+            <span class="offer-badge">{item.category}</span>
+            <a href={item.href}>{item.title}</a>
+          </li>
+        ))}
+      </ul>
+    </aside>
+  )
+}

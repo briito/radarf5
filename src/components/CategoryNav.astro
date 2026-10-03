@@ -1,0 +1,23 @@
+---
+import { CATEGORIES } from "../lib/categories";
+
+interface Props {
+  current?: string; // slug da categoria atual (opcional)
+}
+
+const { current } = Astro.props;
+---
+
+<nav class="category-nav" aria-label="Categorias">
+  {
+    CATEGORIES.map((category) => (
+      <a
+        href={`/categorias/${category.slug}/`}
+        class:list={["category-chip", { "is-active": category.slug === current }]}
+        aria-current={category.slug === current ? "page" : undefined}
+      >
+        {category.name}
+      </a>
+    ))
+  }
+</nav>

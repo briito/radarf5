@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ArticleCard from "../../components/ArticleCard.astro";
+import CategoryNav from "../../components/CategoryNav.astro";
 
 const articles = (await getCollection("articles", ({ data }) => {
     return data.draft !== true;
@@ -10,27 +11,30 @@ const articles = (await getCollection("articles", ({ data }) => {
 
 <BaseLayout
     title="Artigos - Radar F5"
-    description="Ferramentas de IA, prompts e automações explicados de forma prática para quem quer aplicar no próprio negócio digital."
+    description="Guias, tutoriais e prompts de IA para pequenos negócios: conteúdo, Instagram, atendimento, vendas e produtividade, explicados de forma simples."
 >
     <section class="container hero-section">
         <div class="callout-box">
             <h1>Artigos</h1>
 
             <p>
-                Ferramentas de IA, prompts e automações para aplicar na
-                prática nos seus negócios e atividades digitais.
+                Guias práticos sobre IA e redes sociais para pequenos
+                negócios: conteúdo, Instagram, atendimento, vendas e
+                produtividade.
             </p>
         </div>
     </section>
 
     <section class="container articles-grid">
+        <CategoryNav />
+
         <h2>Todos os Artigos</h2>
 
         {
             articles.length === 0 ? (
                 <p class="empty-state">
-                    Estamos preparando os primeiros conteúdos sobre IA
-                    aplicada a negócios digitais. Volte em breve!
+                    Estamos preparando os primeiros conteúdos sobre IA e
+                    redes sociais para pequenos negócios. Volte em breve!
                 </p>
             ) : (
                 articles.map((article) => (

@@ -26,13 +26,35 @@ const { Content } = await render(article);
 
 const wordCount = article.body?.trim().split(/\s+/).filter(Boolean).length ?? 0;
 const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+
+// Artigos relacionados (links internos): usa `related` do frontmatter; se
+// estiver vazio, sugere outros artigos da mesma categoria. Máximo de 3.
+const published = await getCollection("articles", ({ data }) => data.draft !== true);
+const others = published.filter((a) => a.data.slug !== data.slug);
+
+const explicit = data.related
+  .map((slug) => others.find((a) => a.data.slug === slug))
+  .filter((a) => a !== undefined);
+
+const fallback = others
+  .filter((a) => a.data.category === data.category)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const related = (explicit.length > 0 ? explicit : fallback).slice(0, 3).map((a) => ({
+  title: a.data.title,
+  href: `/artigos/${a.data.slug}/`,
+  category: a.data.category,
+}));
+
+const toDateString = (d: Date) => d.toISOString().split("T")[0];
 ---
 
 <ArticleLayout
   title={data.title}
   description={data.description}
   author={data.author}
-  pubDate={data.pubDate.toISOString().split("T")[0]}
+  pubDate={toDateString(data.pubDate)}
+  updatedDate={data.updatedDate ? toDateString(data.updatedDate) : undefined}
   category={data.category}
   image={data.image}
   imageAlt={data.imageAlt}
@@ -41,6 +63,8 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 200));
   ctaUrl={data.ctaUrl}
   ctaText={data.ctaText}
   ctaButtonLabel={data.ctaButtonLabel}
+  ctaType={data.ctaType}
+  related={related}
 >
   <Content />
 </ArticleLayout>
