@@ -107,7 +107,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
     const { error } = await resend.emails.send({
       from: "Radar F5 <contato@radarf5.com>",
-      to: ["radarf5web@gmail.com"],
+      to: ["radarf5main@gmail.com"],
       replyTo: email,
       subject: `Nova mensagem de contato - ${nome}`,
       text: `Nome: ${nome}\nE-mail: ${email}\n\nMensagem:\n${mensagem}`,
