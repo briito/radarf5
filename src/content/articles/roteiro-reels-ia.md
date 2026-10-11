@@ -3,7 +3,7 @@ title: "Como Criar Roteiros e Legendas para Reels com ChatGPT (Prompts Prontos p
 slug: "roteiro-reels-ia"
 description: "Prompts prontos de ChatGPT para criar roteiros e legendas de Reels para o seu pequeno negócio em poucos minutos, mesmo sem experiência com vídeo."
 pubDate: "2026-09-30"
-updatedDate: "2026-10-03"
+updatedDate: "2026-10-11"
 category: "Instagram e Redes Sociais"
 image: "/images/roteiro-reels-ia-1200x675.webp"
 imageAlt: "Pessoa segurando um celular gravando um vídeo curto, com um notebook mostrando o ChatGPT ao fundo"
